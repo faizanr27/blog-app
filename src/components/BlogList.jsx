@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Separator from '@radix-ui/react-separator';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { Box, Card, Flex, Text, Inset, Container, Heading, Grid } from '@radix-ui/themes';
+import { Link } from 'react-router-dom';
 
-const blogPosts = [
+export const blogPosts = [
   {
     id: 1,
     title: "Getting Started with Radix UI",
@@ -52,15 +53,17 @@ const blogPosts = [
   }
 ];
 
-const BlogList = () => {
+const BlogList = () => { 
+
   return (
-    <Container size="3" mt={'8'} width={{initial:'auto'}}  maxWidth={{initial: '50%', xs:'80%', sm:'60%', xl:'60%'}}>
+    <Container size="3" mt={'4'} width={{initial:'auto'}}  maxWidth={{initial: '50%', xs:'80%', sm:'60%', xl:'60%'}}>
       <Grid columns={{initial:'1', xs:'2', md:'3'}} gap='5' justify={'center'} align={'center'}>
         {blogPosts.map((post, index) => (
           <React.Fragment key={post.id}>
-            <Box maxWidth={{initial:'240px',sm:'340px'}} >
+            <Box maxWidth={{initial:'240px',sm:'340px'}}>
             <Card size={{initial:'1' , lg: '2'}}>
               <Inset clip="padding-box" side="top" pb="0">
+                <Link to={`/post/${post.id}`}>
                 <img
                   src={post.imageUrl}
                   alt={post.title}
@@ -72,17 +75,24 @@ const BlogList = () => {
                     backgroundColor: "var(--gray-5)",
                   }}
                 />
+                </Link>
               </Inset>
               <Box p="4" >
-                <Heading as="h2" size={{initial:'2' , lg: '3', xl:'4'}} mb={'1'} >{post.title}</Heading>
+                <Heading as="h2" size={{initial:'2' , lg: '3', xl:'4'}} mb={'1'} >
+                
+                {post.title}
+                
+                </Heading>
                 <Text as="p" size={{initial:'1' , lg: '3', xl: '4'}} mb={'1'}>
                   {post.description}
                 </Text>
 
                 <Box display={'inline-block'}>
+                  <Link to={`/post/${post.id}`}>
                   <Text as="a" size={{initial:'1' , lg: '2'}} mb={'1'} color="blue" href={`/blog/${post.id}`} style={{ display: 'inline-flex', alignItems: 'center' }}>
                     Read more <ArrowRightIcon style={{ marginLeft: '4px' }} />
                   </Text>
+                  </Link>
                   <Text as="p" size={{initial:'1' , lg: '2'}} color="gray">
                   Published on {post.date} by {post.author}
                 </Text>

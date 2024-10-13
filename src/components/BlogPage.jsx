@@ -1,36 +1,37 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Avatar, Box, Container, Flex, Heading, Text } from '@radix-ui/themes';
-import { CalendarIcon, PersonIcon } from '@radix-ui/react-icons';
+import { Avatar, Box, Container, Flex, Heading, Text, } from '@radix-ui/themes';
+import { CalendarIcon } from '@radix-ui/react-icons';
+import { blogPosts } from './BlogList';
 
-const blogPosts = {
-  1: {
-    title: "Getting Started with Radix UI",
-    content: "Radix UI is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components as the base layer of your design system...",
-    date: "2024-10-01",
-    author: "Jane Doe",
-    authorAvatar: "https://i.pravatar.cc/150?u=janedoe"
-  },
-  // Add more blog posts here
-};
 
 const BlogPage = () => {
   const { id } = useParams();
-  const post = blogPosts[id];
+  const post = blogPosts.find((blog) => blog.id === Number(id));
 
   if (!post) {
     return <Text>Blog post not found</Text>;
   }
 
   return (
-    <Container size="3">
+    <Container size="3" mx={{initial:'4',xl:'0'}}>
       <Box py="6">
+        {/* Display the blog image */}
+        <img src={post.imageUrl} alt={post.title} className='w-full h-1/2 overflow-hidden'/>
+
         <Heading size="8" mb="4">{post.title}</Heading>
-        <Flex align="center" gap="3" mb="6">
+
+
+        {/* Post description and content */}
+        <Box className="prose max-w-none">
+          <Text size="3" mb="4">{post.description}</Text>
+        </Box>
+        <Flex align="center" gap="3" justify={'between'} mt="6" >
+          {/* Fallback to initials if no avatar image */}
           <Avatar
             size="4"
-            src={post.authorAvatar}
-            fallback={post.author.split(' ').map(n => n[0]).join('')}
+            src={post.authorAvatar}  // Assuming you might add authorAvatar later; if not, you can remove this line
+            fallback={post.author.split(' ').map(n => n[0]).join('')}  // Generate initials
             radius="full"
           />
           <Box>
@@ -41,9 +42,6 @@ const BlogPage = () => {
             </Flex>
           </Box>
         </Flex>
-        <Box className="prose max-w-none">
-          <Text size="3">{post.content}</Text>
-        </Box>
       </Box>
     </Container>
   );
