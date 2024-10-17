@@ -10,23 +10,23 @@ const Navbar = () => {
   const getSegmentedControlValue = () => {
     if (location.pathname === '/') return 'Home';
     if (location.pathname === '/my-blogs') return 'My-Blogs';
-    if (location.pathname === '/post-blog') return 'Post Blog';
+    if (location.pathname === '/post-blog') return 'Post-Blog';
     return 'Home';
   };
   return (
-    <Flex direction={"row"} mx={{sm: '6',lg:"9"}} justify={'between'}>
-        <Heading mt={'2'}>Blog</Heading>
+    <Flex direction={"row"} mx={{initial: '4', sm: '6',lg:"9"}} justify={'between'}>
+        <Heading mt={{initial:'4'}} size={'6'}>Blog</Heading>
         <div className="hidden sm:block">
-        <SegmentedControl.Root value={getSegmentedControlValue()} size={'2'} radius={'medium'} mt={'3'}>
+        <SegmentedControl.Root value={getSegmentedControlValue()} size={'2'} radius={'medium'} mt={{initial:'4'}}>
       <SegmentedControl.Item value="Home" asChild>
-        <Link to="/">Home</Link>
+        <Link to="/" >Home</Link>
       </SegmentedControl.Item>
 
       <SegmentedControl.Item value="My-Blogs" asChild>
-        <Link to="/my-blogs">My Blogs</Link>
+        <Link to="/my-blogs" >My Blogs</Link>
       </SegmentedControl.Item>
 
-      <SegmentedControl.Item value="Post Blog" asChild>
+      <SegmentedControl.Item value="Post-Blog" asChild>
         <Link to="/post-blog">Post Blog</Link>
       </SegmentedControl.Item>
     </SegmentedControl.Root>
@@ -51,11 +51,11 @@ const Navbar = () => {
               </HoverCard.Content>
                   </HoverCard.Root>
         ) : (
-          <Button variant='surface' color='' mt={'4'}>Login/Signup</Button>
+          <Button variant='surface' color='' mt={{initial:'4'}}>Login/Signup</Button>
         ) }
-        
 
-        
+
+
     </Flex>
   );
 };

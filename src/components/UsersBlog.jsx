@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import * as Separator from '@radix-ui/react-separator';
+import React from 'react';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { Box, Card, Flex, Text, Inset, Container, Heading, Grid } from '@radix-ui/themes';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 
 export const blogPosts = [
   {
@@ -36,24 +35,10 @@ export const blogPosts = [
     date: "2024-10-10",
     author: "Alice Johnson",
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  },  {
-    id: 5,
-    title: "Building Accessible Web Applications",
-    description: "Best practices for creating inclusive and accessible web apps.",
-    date: "2024-10-10",
-    author: "Alice Johnson",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  },  {
-    id: 6,
-    title: "Building Accessible Web Applications",
-    description: "Best practices for creating inclusive and accessible web apps.",
-    date: "2024-10-10",
-    author: "Alice Johnson",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
   }
 ];
 
-const BlogList = () => {
+const UsersBlog = () => {
 
   return (
     <Container size="3" mt={{initial:'8', sm:'8'}} width={{initial:'auto'}}  maxWidth={{initial: '70%', xs:'80%', sm:'60%', xl:'60%'}}>
@@ -107,4 +92,4 @@ const BlogList = () => {
   );
 };
 
-export default BlogList;
+export default UsersBlog;
